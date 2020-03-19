@@ -4,7 +4,8 @@
       <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>|
       <router-link to="/before">Before</router-link>|
-      <router-link to="/after">After</router-link>
+      <router-link to="/after">After</router-link>|
+      <router-link to="/email">Email</router-link>
     </div>
     <router-view />
   </div>
