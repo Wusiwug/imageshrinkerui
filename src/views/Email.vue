@@ -15,7 +15,7 @@
       </div>
       <h4>Email Message</h4>
       <textarea rows="7" cols="50" v-model="emessage"></textarea>
-      <button @click="sendEmail">Send Email</button>
+      <button @click="exeEmail">Send Email</button>
     </div>
 
     <div v-for="(image, index) in images" :key="index" class="thumbnail">
@@ -32,7 +32,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import { LoadCheck } from "../mixins/loadCheck";
-import axios from "axios";
+import { sendEmail } from "../utilities/email";
 
 export default {
   name: "After",
@@ -62,32 +62,14 @@ export default {
     imgSelected(eve) {
       this.imgUrl = eve.target.src;
     },
-    sendEmail() {
-      let serverUrl = "https://image-streamer.herokuapp.com/send";
-      let arr1 = this.imgUrl.split(".");
-      arr1[arr1.length - 2] += "~email";
-      let fullImgUrl = arr1.join(".");
-
-      let htmlBod = `<html>
-<h1>ImgeStreamer 2.1</h1>
-<h3>CHG HackDay Project</h3>
-<p><strong>Message: </strong>${this.emessage}</p>
-<img src="${fullImgUrl}" alt="HackDay Picture"/>
-<p>By: Joseph VanWagoner & Edmundo Rubio</p>
-</html>`;
-
-      let postBody = {
-        emailRecipients: this.recipients,
+    exeEmail() {
+      let dataForEmail = {
+        imgUrl: this.imgUrl,
+        recipients: this.recipients,
         emailSubject: this.emailSubject,
-        emailBody: htmlBod
+        message: this.emessage
       };
-
-      console.log("HTML send to:");
-      console.log(htmlBod);
-
-      axios.post(serverUrl, postBody).then(resp => {
-        console.log("\n ==> Server response: ", resp);
-      });
+      sendEmail(dataForEmail);
     }
   }
 };
