@@ -2,6 +2,7 @@
   <div class="container">
     <div class="form">
       <h4>Email Subject</h4>
+      <v-btn small color="primary">Primary</v-btn>
       <input type="text" v-model="emailSubject" />
       <h4>Recipients emails:</h4>
       <textarea rows="7" cols="50" v-model="recipients"></textarea>
