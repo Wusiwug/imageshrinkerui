@@ -43,27 +43,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.container {
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  margin: 0 25%;
-  display: flex;
-
-  .form {
-    width: 100%;
-    margin-bottom: 2rem;
-
-    input {
-      padding: 0.5rem;
-      margin-left: 0.5rem;
-    }
-  }
-
-  .thumbnail {
-    flex: 1 1 auto;
-  }
-}
-</style>
+<style lang="scss"></style>

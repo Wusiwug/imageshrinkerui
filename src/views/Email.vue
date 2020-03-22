@@ -1,31 +1,50 @@
 <template>
-  <div class="container">
-    <div class="form">
-      <h4>Email Subject</h4>
-      <v-btn small color="primary">Primary</v-btn>
-      <input type="text" v-model="emailSubject" />
-      <h4>Recipients emails:</h4>
-      <textarea rows="7" cols="50" v-model="recipients"></textarea>
-      <div id="img-cont">
-        <h4>Image to send:</h4>
-        <label>Width:</label>
-        <input type="number" v-model="width" />
-        <div id="c-img">
+  <div class="main-container">
+    <v-card class="mx-auto mb-4" max-width="500" color="blue lighten-4" outlined>
+      <v-card-title>Email Details</v-card-title>
+      <div class="pa-3">
+        <v-text-field
+          label="Email subject"
+          v-model="emailSubject"
+          :rules="rules"
+          hide-details="auto"
+          background-color="light-blue lighten-5"
+        ></v-text-field>
+        <v-textarea
+          outlined
+          v-model="recipients"
+          color="black"
+          name="input-7-4"
+          :rules="rules"
+          class="mt-5"
+          label="Recipients Emails"
+          background-color="yellow lighten-5"
+        ></v-textarea>
+
+        <div class="ma-3">
           <img :src="imgUrl" alt="No Img available" />
         </div>
-      </div>
-      <h4>Email Message</h4>
-      <textarea rows="7" cols="50" v-model="emessage"></textarea>
-      <button @click="exeEmail">Send Email</button>
-    </div>
+        <v-textarea
+          outlined
+          v-model="emessage"
+          color="black"
+          name="input-7-4"
+          label="Email Message"
+          background-color="yellow lighten-5"
+        ></v-textarea>
 
-    <div v-for="(image, index) in images" :key="index" class="thumbnail">
-      <img
-        :src="`${image.name}~${width}.${image.ext}`"
-        :width="width"
-        @load="imageLoaded"
-        @click="imgSelected"
-      />
+        <v-btn color="success" @click="exeEmail">Send Email</v-btn>
+      </div>
+    </v-card>
+    <div class="img-container">
+      <div v-for="(image, index) in images" :key="index" class="thumbnail">
+        <img
+          :src="`${image.name}~${width}.${image.ext}`"
+          :width="width"
+          @load="imageLoaded"
+          @click="imgSelected"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -46,7 +65,8 @@ export default {
       emailSubject: "",
       recipients: "",
       imgUrl: "https://ucarecdn.com/2c4f81e4-d18c-4aec-aa63-3994c554f1ea/",
-      emessage: ""
+      emessage: "",
+      rules: [value => (value && value.length >= 3) || "Min 3 characters"]
     };
   },
 
@@ -71,41 +91,29 @@ export default {
         message: this.emessage
       };
       sendEmail(dataForEmail);
+      this.imgUrl =
+        "https://ucarecdn.com/2c4f81e4-d18c-4aec-aa63-3994c554f1ea/";
+      this.recipients = "";
+      this.emailSubject = "";
+      this.emessage = "";
     }
   }
 };
 </script>
 
 <style lang="scss">
-.container {
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  margin: 0 25%;
+.thumbnail {
+  flex: 1 1 auto;
+}
+
+.img-container {
+  border: 1px slid black;
+  background-color: rgb(223, 205, 255);
   display: flex;
-
-  .form {
-    width: 100%;
-    margin-bottom: 2rem;
-
-    input {
-      padding: 0.5rem;
-      margin-left: 0.5rem;
-    }
-  }
-
-  .thumbnail {
-    flex: 1 1 auto;
-  }
-
-  #img-cont {
-    display: flex;
-    flex-direction: column;
-  }
-
-  #c-img {
-    margin-top: 10px;
-  }
+  flex-wrap: wrap;
+  max-width: 60vw;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
 }
 </style>

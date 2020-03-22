@@ -1,14 +1,67 @@
 <template>
   <v-app>
     <div id="app">
-      <div id="nav">
-        <router-link to="/">Home</router-link>|
-        <router-link to="/about">About</router-link>|
-        <router-link to="/before">Before</router-link>|
-        <router-link to="/after">After</router-link>|
-        <router-link to="/email">Email</router-link>
+      <div>
+        <v-card class="mx-auto" height="1500">
+          <v-app-bar color="blue lighten-2" dark>
+            <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+
+            <v-toolbar-title>Image Shrinker</v-toolbar-title>
+          </v-app-bar>
+
+          <v-navigation-drawer v-model="drawer" absolute temporary>
+            <v-list nav dense>
+              <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+                <router-link to="/">
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon>mdi-home</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Home</v-list-item-title>
+                  </v-list-item>
+                </router-link>
+
+                <router-link to="/about">
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon>mdi-book</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>About</v-list-item-title>
+                  </v-list-item>
+                </router-link>
+
+                <router-link to="/before">
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon>mdi-adjust</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Before</v-list-item-title>
+                  </v-list-item>
+                </router-link>
+
+                <router-link to="/after">
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon>mdi-loupe</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>After</v-list-item-title>
+                  </v-list-item>
+                </router-link>
+
+                <router-link to="/email">
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon>mdi-email</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Email</v-list-item-title>
+                  </v-list-item>
+                </router-link>
+              </v-list-item-group>
+            </v-list>
+          </v-navigation-drawer>
+          <router-view class="mt-3" />
+        </v-card>
       </div>
-      <router-view />
     </div>
   </v-app>
 </template>
@@ -20,7 +73,8 @@ export default {
   components: {},
 
   data: () => ({
-    //
+    drawer: false,
+    bottom: true
   })
 };
 </script>
