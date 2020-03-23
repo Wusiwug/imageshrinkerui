@@ -6,7 +6,6 @@
         <v-text-field
           label="Email subject"
           v-model="emailSubject"
-          :rules="rules"
           hide-details="auto"
           background-color="light-blue lighten-5"
         ></v-text-field>
@@ -15,11 +14,17 @@
           v-model="recipients"
           color="black"
           name="input-7-4"
-          :rules="rules"
           class="mt-5"
           label="Recipients Emails"
           background-color="yellow lighten-5"
         ></v-textarea>
+
+        <v-text-field
+          label="Image Width"
+          v-model="width"
+          hide-details="auto"
+          background-color="light-blue lighten-5"
+        ></v-text-field>
 
         <div class="ma-3">
           <img :src="imgUrl" alt="No Img available" />
