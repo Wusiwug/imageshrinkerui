@@ -8,8 +8,10 @@
       <b>Load Time:</b>
       {{ loadTime }}
     </div>
-    <div v-for="(image, index) in images" :key="index" class="thumbnail">
-      <img :src="`${image.name}~${width}.${image.ext}`" :width="width" @load="imageLoaded" />
+    <div class="img-container">
+      <div v-for="(image, index) in images" :key="index" class="thumbnail">
+        <img :src="`${image.name}~${width}.${image.ext}`" :width="width" @load="imageLoaded" />
+      </div>
     </div>
   </div>
 </template>

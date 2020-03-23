@@ -86,6 +86,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
 #nav {
   padding: 30px;
   a {
@@ -94,6 +95,22 @@ export default {
     &.router-link-exact-active {
       color: #42b983;
     }
+  }
+}
+
+.img-container {
+  border: 1px slid black;
+  background-color: rgb(223, 205, 255);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin: 0 25%;
+  display: flex;
+  padding: 5px;
+
+  .thumbnail {
+    flex: 1 1 auto;
   }
 }
 </style>

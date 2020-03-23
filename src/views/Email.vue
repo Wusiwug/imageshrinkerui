@@ -107,18 +107,14 @@ export default {
 </script>
 
 <style lang="scss">
-.thumbnail {
-  flex: 1 1 auto;
-}
+.v-input {
+  input {
+    padding: 5px;
+  }
 
-.img-container {
-  border: 1px slid black;
-  background-color: rgb(223, 205, 255);
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 60vw;
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 10px;
+  .v-label {
+    top: 0px;
+    padding: 5px;
+  }
 }
 </style>
